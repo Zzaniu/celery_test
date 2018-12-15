@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+body {
+    font-family: "宋体", "Arial Narrow", "Microsoft YaHei";
+    font-size: 12px;
+}
+
+#decTitle {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin-top: 12px;
+    font-family: "SimHei", "宋体", "Arial Narrow", "Microsoft YaHei";
+
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: inherit;
+    padding: 0 0 1px 5px;
+    line-height: 1;
+}
+
+tr td {
+    border: 1px solid black;
+}
+
+.td-border-right {
+    border-right: none;
+}
+.border-none{
+     border-right: none;
+    border-left: none;
+    border-bottom: none;
+    border-top: none;
+}
+
+.td-border-left {
+    border-left: none;
+}
+
+.td-border-bottom {
+    border-bottom: none;
+}
+
+.td-border-top {
+    border-top: none;
+}
+.tr-border-top{
+    border-top: none;
+}
+
+.tr-border-top td {
+    border-top: none;
+    font-size: 12px;
+}
+
+.tr-border-bottom{
+    border-bottom: none;
+}
+
+.tr-border-bottom td {
+    border-bottom: none;
+    font-size: 12px;
+}
+
+.tr-border-top-bottom{
+    border-top: none;
+    border-bottom: none;
+}
+
+.tr-border-top-bottom td {
+    border-top: none;
+    border-bottom: none;
+    font-size: 12px;
+}
+
+/*控制顶部无边框,底部有虚线边框*/
+.tr-border-top-none-bottom-dashed td {
+    border-top: none;
+    border-bottom: 1px dashed #000;
+    font-size: 12px;
+}
+
+/*控制顶部有虚线边框,底部无边框*/
+.tr-border-top-dashed-bottom-none td {
+    border-top: 1px dashed #000;
+    border-bottom: none;
+    font-size: 12px;
+}
+
+.td-has-border-right {
+    border-right: solid 1px black;
+}
+
+.tr-border-left-right td {
+    border-left: none;
+    border-right: none;
+    font-size: 12px;
+}
+.show-right{
+    border-right: 1px solid #000000;
+}
+
+.tr-td-font-size-12 td {
+    font-size: 12px;
+}
+
+/*黑体字体*/
+.font-hei {
+    padding-top: 1px !important;
+    font-family: SimHei, 宋体, "Arial Narrow", "Microsoft YaHei";
+}
+
+/*黑体字体*/
+.tr-font-hei td {
+    font-family: SimHei, 宋体, "Arial Narrow", "Microsoft YaHei";
+}
+
+.my-input {
+    font-size: 12px;
+    font-family: "宋体", "sans-serif";
+}
+
+.dec-filed {
+    font-size: 12px;
+}
+/*span {*/
+    /*word-spacing:0.4em;*/
+    /*letter-spacing:3px;*/
+/*}*/
+/*.small-font {*/
+    /*font-size: 12px;*/
+    /*-webkit-transform-origin-x: 0;*/
+    /*-webkit-transform: scale(0.120);*/
+/*}*/
+
+/*.smallsize-font {*/
+    /*　　font-size: 12.12px;*/
+/*}*/
+
+/*#head_table {*/
+    /*-webkit-transform: scale(0.5);*/
+    /*-o-transform: scale(1);*/
+    /*display: inline-block;*/
+    /*font-size: 5px;*/
+/*}*/
+
+/*tbody td{*/
+    /*height: 15px;*/
+/*}*/
+
+/*.my-tr-h-120{*/
+/*height: 212px;*/
+/*}*/

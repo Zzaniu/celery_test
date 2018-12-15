@@ -1,0 +1,38 @@
+/*AEO验证*/
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 0 0 0 5px;
+    line-height: 1.0;
+    vertical-align: top;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+}
+
+
+
+.px13song{
+    font-family: "宋体";
+    font-size: 13px
+}
+
+.px12hei{
+    font-size: 12px;
+    font-family: "SimHei"
+}
+
+.td-declist-head{
+    height: 16px;
+    padding:2px 0 0 4px;
+
+}
+.td-declist-head div{
+    font-size: 12px;
+    font-family: "SimHei"
+}
+
+
+
+/*.padding0015{*/
+    /*padding:0 0 1px 5px;*/
+/*}*/
+

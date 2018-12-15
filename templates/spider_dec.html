@@ -1,0 +1,262 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    <title>报关单捞取</title>
+{% endblock %}
+
+{% block css %}
+
+
+    <style>
+        .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+            position: relative;
+            min-height: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        .form-horizontal .control-label {
+            padding-top: 4px;
+            margin-bottom: 0;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        input[type=text] {
+            background: #fff;
+            font-size: 14px;
+            padding: 0 8px;
+        }
+
+        .hover {
+            background: #F5F5F5;
+        }
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 25px;
+            padding: 2px 12px;
+            font-size: 12px;
+        }
+        .td-yellow {
+            background: #BBFFBB !important;
+        }
+
+        .my-table thead tr th {
+        {#            text-align: center;#} vertical-align: middle /** 设置垂直方向居中 */
+        }
+
+        .search_suggest {
+            width: 100% !important;
+            z-index: 999;
+            border: 1px solid #999999;
+            display: none;
+        }
+
+        .search_suggest li {
+            height: 18px;
+            overflow: hidden;
+            padding-left: 12px;
+            line-height: 18px;
+            background: #FFFFFF;
+            cursor: default;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .search_suggest li.hover {
+            background: #DDDDDD;
+        }
+
+        .search_suggest li:hover {
+            background: #DDDDDD;
+        }
+
+        .my-clone-li:hover {
+            background: #DDDDDD;
+        }
+
+        .no-border {
+            border: none !important;
+            box-shadow: none !important;
+            background-color: white !important;
+
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div>
+    <form method="post" action="/" onsubmit="return checkForm();">
+        {% csrf_token %}
+
+        <div style="clear: both">&nbsp;</div>
+        <div class="row" style="margin-top: 10px">
+        <div style="margin: 10px 0 0 18px;display:inline-block;font-size: 15px;padding: 0 0 0 10px">
+{#            <a style="text-decoration: none" href="javascript:void(0);" onclick="selectDecTemplate()">导入数据</a>#}
+        </div>
+
+
+
+    </div>
+        <div class="row" style="border: 1px solid lightgray;padding: 20px 0 0 0;margin: 10px 15px">
+            <div style="text-align: center;"><h3>报关单捞取</h3></div>
+            <div class="form-horizontal col-md-12" style="margin-top: 5%">
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-3 control-label">报关单类型</label>
+                    <div class="col-sm-8">
+                        <select id="dec_type" class="form-control td-clear" name="dec_type">
+                        {% for k,v in dec_type_dict.items %}
+                            {% if k == dec_type %}
+                                <option value="{{ k }}" selected>{{ v }}</option>
+                            {% else %}
+                                <option value="{{ k }}">{{ v }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-4 control-label">企业类别</label>
+                    <div class="col-sm-8 ">
+                        <select id="enterprise" class="form-control td-clear" name="enterprise">
+                            {% for k,v in customs_unit.items %}
+                                {% if k == enterprise %}
+                                    <option value="{{ k }}" selected>{{ v }}</option>
+                                {% else %}
+                                    <option value="{{ k }}">{{ v }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-4 control-label">进/出口</label>
+                    <div class="col-sm-8">
+                        <select id="ieflag" class="form-control td-clear" name="ieflag">
+                            {% for k,v in ieflg.items %}
+                                {% if k == ieflag %}
+                                    <option value="{{ k }}" selected>{{ v }}</option>
+                                {% else %}
+                                    <option value="{{ k }}">{{ v }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-horizontal col-md-12">
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-3 control-label">统一编号</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" value="{{ seqno }}" name="seqno" id="seqno">
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-4 control-label">报关单号</label>
+                    <div class="col-sm-8 ">
+                        <input type="text" class="form-control td-clear" value="{{ entryid }}" name="entryid" id="entryid">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="" class="col-sm-4 control-label">是否结关</label>
+                    <div class="col-sm-8">
+                        <select id="is_clear" class="form-control td-clear" name="is_clear">
+                            {% for k,v in clear_customs.items %}
+                                {% if k == is_clear %}
+                                    <option value="{{ k }}" selected>{{ v }}</option>
+                                {% else %}
+                                    <option value="{{ k }}">{{ v }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-horizontal col-md-12">
+                <div style="text-align:center">
+                    <label id="seniorButton" for="" onclick="funcSenior()">{% if senior == '1' %}普通查询{% else %}高级查询{% endif %}</label>
+                    <input type="text" class="hide" name="senior" value="{{ senior }}" id="senior">
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-left: 86%;margin-top: 2%">
+            <div class="col-sm-2">
+                <input type="submit" value="确认捞取" class="btn my-btn1">
+            </div>
+        </div>
+    </form>
+    </div>
+    <div id="info" class="hide">{{ info }}</div>
+    <!-- Modal -->
+
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script>
+
+        if ($("#info").text().length > 0){
+            alert($("#info").text())
+        }
+
+        if ($("#senior").val() == '1') {
+            $(".td-clear").each(function () {
+                $(this).attr('disabled', 'true');
+            });
+            $("#entryid").val('');
+        } else {
+            $(".td-clear").each(function () {
+                $(this).removeAttr('disabled');
+            });
+        }
+
+        function funcSenior() {
+            if ("高级查询" == $("#seniorButton").html()) {
+                $("#seniorButton").html("基础查询");
+                $("#senior").val("1");
+                $(".td-clear").each(function () {
+                    $(this).attr('disabled', 'true');
+                });
+                $("#entryid").val('');
+            } else {
+                $("#seniorButton").html("高级查询");
+                $("#senior").val("0");
+                $(".td-clear").each(function () {
+                    $(this).removeAttr('disabled');
+                });
+            }
+        }
+
+        function checkForm() {
+            var field = {
+                'seqno': '统一编号',
+                'entryid': '报关单号',
+            };
+            var error = new Array();
+            for (var k in field) {
+                if ($("input[name="+k+"]").val().trim() == undefined || $("input[name="+k+"]").val().trim() == ''){
+                    error.push(field[k]);
+                }
+            }
+            if (error.length > 1) {
+                alert(error.join('和') + '不可同时为空');
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+    <script>
+        $('#myStatistics').addClass('open').siblings().removeClass('open');
+        $("#logistice").addClass('active').siblings().removeClass('active');
+    </script>
+{% endblock %}

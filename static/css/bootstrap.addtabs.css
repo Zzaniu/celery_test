@@ -1,0 +1,112 @@
+/*
+    Created on : 2015-8-11, 16:18:09
+    Author     : joe
+*/
+
+/*.close-tab {*/
+    /*font-size: 10px;*/
+    /*position: absolute;*/
+    /*right: 7px;*/
+    /*top: 32%;*/
+    /*!*padding-left: 25px;*!*/
+    /*z-index: 2;*/
+    /*cursor: pointer;*/
+    /*color: #94A6B0;*/
+    /*margin-left: 20px;*/
+    /*border: 1px solid #e3e3e3;*/
+    /*border-radius: 50%;*/
+    /*background-color: #e3e3e3;*/
+/*}*/
+
+/* basic style */
+.close-tab {
+    /* still bad on picking color */
+    background: #d5d8dd;
+    color: white;
+    /* make a round button */
+    border-radius: 50%;
+    /* center text */
+    line-height: 8px;
+    text-align: center;
+    height: 12px;
+    width: 12px;
+    font-size: 10px;
+    padding: 1px;
+    font-style: normal;
+    cursor: pointer;
+}
+/* use cross as close button */
+.close-tab::before {
+    content: "	\2A2F";
+}
+/* place the button on top-right */
+.close-tab {
+    position: absolute;
+    right: 7px;
+    top: 36%;
+}
+
+.nav-tabs {
+    position: relative;
+}
+
+.nav-tabs li {
+    position: relative;
+    margin-bottom: 0;
+    border: 0;
+}
+
+/*.nav-tabs {position: relative;border-bottom:0px;}*/
+/*.nav-tabs li{position: relative;margin-bottom:0px;}*/
+/*.nav-tabs li > a:hover {*/
+    /*background-color: white;*/
+    /*color: #32c5d2;*/
+    /*border: 0;*/
+/*}*/
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    color: #32c5d2;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs li > a {
+    cursor: pointer !important;
+    color: #888;
+    font-size: 13px !important;
+    padding: 10px 20px 10px 15px;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+}
+
+.iframeClass {
+    z-index: 1;
+    visibility: inherit;
+    width: 100%;
+    /*frameborder: 'no';*/
+    border: 0;
+    /*marginwidth: 0;*/
+    /*marginheight: 0;*/
+    /*scrolling-x: no;*/
+    /*scrolling-y: auto;*/
+    /*allowtransparency: true;*/
+    /*overflow-x: hidden;*/
+    /*margin-top: 20px;*/
+}
+
+.tab-drop {
+    margin-right: 30px;
+}
+
+.rightMenu {
+    position: absolute;
+    width: 150px;
+    z-index: 99;
+    display: none;
+}
+
+.dragBack {
+    background-color: #ddd;
+}
